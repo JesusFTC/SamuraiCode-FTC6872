@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
@@ -26,6 +27,8 @@ public class RobotCode_TeleOpEncoders extends OpMode {
     IMUBench bench = new IMUBench();
     double power = 0.5;
     ConfigureDistance DistanceBench = new ConfigureDistance();
+    boolean manualIntake = false;
+    ElapsedTime timer = new ElapsedTime();
 
 
     @Override
@@ -76,8 +79,6 @@ public class RobotCode_TeleOpEncoders extends OpMode {
         double rx = gamepad1.right_stick_x;
         //Ejemplo : 200 = 22RPM
         double DesearedVelocity = 1900; //1850
-
-        boolean manualIntake = false;
 
 
         //----------------------C-h-a-s-i-s-----------------------
