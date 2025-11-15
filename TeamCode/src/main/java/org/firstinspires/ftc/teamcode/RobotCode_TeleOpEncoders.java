@@ -29,6 +29,7 @@ public class RobotCode_TeleOpEncoders extends OpMode {
     ConfigureDistance DistanceBench = new ConfigureDistance();
     boolean manualIntake = false;
     ElapsedTime timer = new ElapsedTime();
+    private boolean extraTimeActive = false;
 
 
     @Override
@@ -62,6 +63,7 @@ public class RobotCode_TeleOpEncoders extends OpMode {
         m_bl.setDirection(DcMotorSimple.Direction.FORWARD);
         m_br.setDirection(DcMotorSimple.Direction.REVERSE);
         m_fl.setDirection(DcMotorSimple.Direction.FORWARD);
+
     }
 
 
@@ -162,10 +164,24 @@ public class RobotCode_TeleOpEncoders extends OpMode {
         if (!manualIntake) {
             if (DistanceBench.getDistance() >= 0 && DistanceBench.getDistance() <= 8) {
                 m_intake.setPower(-1);
+                extraTimeActive = true;
+                timer.reset();
+                }
+            else if (extraTimeActive) {
 
-            } else {
+                m_intake.setPower(-1);
+
+                if (timer.milliseconds() >= 300) {
+                    extraTimeActive = false;
+                }
+            }
+            else {
                 m_intake.setPower(0);
             }
+        }
+        else
+        {
+            m_intake.setPower(0);
         }
     }
 }
