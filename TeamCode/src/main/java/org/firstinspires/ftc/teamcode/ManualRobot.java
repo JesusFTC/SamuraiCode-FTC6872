@@ -129,15 +129,15 @@ public class ManualRobot extends OpMode {
             bench.resetImu();
         }
 
-        //Servo
-        if (m_intake.getVelocity() < 0 && m_shooter2.getVelocity() < 1) {
+        //Servo (no usado solo en automatico o boton)
+        /*if (m_intake.getVelocity() < 0 && m_shooter2.getVelocity() < 1) {
             Servo90.setPosition(0.15);
         }
         if (m_shooter2.getVelocity() >= 950 && m_intake.getVelocity() != 0) {
             Servo90.setPosition(0.3);
         } else {
             Servo90.setPosition(0.15);
-        }
+        }*/
 
         //Poder del motor
         if (gamepad1.b) {
