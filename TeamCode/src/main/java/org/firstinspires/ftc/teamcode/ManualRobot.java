@@ -123,9 +123,6 @@ public class ManualRobot extends OpMode {
             m_shooter2.setPower(0);
         }
 
-        if (gamepad1.left_bumper) {
-            m_intake.setPower(0);
-        }
 
         //Reseteo de frente
         if (gamepad1.x) {
