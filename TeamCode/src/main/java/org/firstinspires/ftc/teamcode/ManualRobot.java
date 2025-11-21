@@ -25,6 +25,8 @@ public class ManualRobot extends OpMode {
     IMUBench bench = new IMUBench();
 
     double power = 0.5;
+    double RPMDistanceLong;
+    double RPMDistanceShort;
 
 
     @Override
@@ -66,7 +68,6 @@ public class ManualRobot extends OpMode {
         telemetry.addData("Current Orientation:", bench.getHeading(AngleUnit.DEGREES));
         telemetry.addData("Shooter Velocity:", m_shooter2.getVelocity());
         telemetry.addData("Intake Velocity:", m_intake.getVelocity());
-        telemetry.addData("Posicion:", Servo90.getPosition());
         telemetry.update();
 
         double y = gamepad1.left_stick_y;
@@ -106,6 +107,7 @@ public class ManualRobot extends OpMode {
 
 
         //----------------------M-e-c-h-a-n-i-s-m-s-----------------------
+
 
         if (gamepad1.left_trigger >= 0.1) {
             m_intake.setPower(-0.9);

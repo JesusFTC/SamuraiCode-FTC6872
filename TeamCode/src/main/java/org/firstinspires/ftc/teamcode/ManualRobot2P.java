@@ -24,7 +24,8 @@ public class ManualRobot2P extends OpMode {
     IMUBench bench = new IMUBench();
 
     double power = 0;
-
+    double RPMDistanceLong;
+    double RPMDistanceShort;
 
     @Override
     public void init() {
@@ -95,20 +96,29 @@ public class ManualRobot2P extends OpMode {
 
         //----------------------M-e-c-h-a-n-i-s-m-s-----------------------
 
-        if (gamepad2.left_trigger >= 0.1) {
+        if (gamepad1.left_trigger >= 0.1) {
             m_intake.setPower(-0.9);
         }
         else {
             m_intake.setPower(0);
         }
 
+        if(gamepad2.dpad_up){
+            RPMDistanceLong = 500;
+        }
+        if(gamepad2.dpad_left){
+            RPMDistanceLong = 530;
+        }
+        if(gamepad2.dpad_right){
+            RPMDistanceLong = 650;
+        }
+        if(gamepad2.dpad_down){
+            RPMDistanceLong = 650;
+        }
 
         if (gamepad2.right_trigger >= 0.1) {
             m_shooter1.setPower(-gamepad1.right_trigger);
             m_shooter2.setPower(gamepad1.right_trigger);
-        } else {
-            m_shooter1.setPower(0);
-            m_shooter2.setPower(0);
         }
 
 
